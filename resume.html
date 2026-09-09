@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apollos Gibbs  CIS Student & Aspiring Technical Support / IT Professional</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #14203A;
+    --ink-soft: #3D4A66;
+    --paper: #F6F7FA;
+    --panel: #FFFFFF;
+    --line: #DCE1EA;
+    --signal: #0E6E62;
+    --signal-soft: #E4F3F0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  a { color: var(--signal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    background: var(--ink);
+    color: #EDF1F7;
+    padding: 72px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%);
+  }
+
+  .hero-inner { position: relative; z-index: 1; }
+
+  .hero-name {
+    font-size: clamp(2.1rem, 5vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-role {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #9FB4C7;
+    font-weight: 500;
+  }
+
+  .hero-meta {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.86rem;
+    color: #BFD0DE;
+  }
+
+  .hero-meta a { color: #BFD0DE; }
+  .hero-meta a:hover { color: #fff; }
+
+  .hero-meta span { opacity: 0.45; }
+
+  /* ---------- Nav ---------- */
+  nav.subnav {
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav.subnav ul {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  nav.subnav a {
+    display: inline-block;
+    padding: 14px 6px;
+    margin-right: 22px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav.subnav a:hover { color: var(--signal); text-decoration: none; }
+
+  /* ---------- Sections ---------- */
+  main { padding: 52px 0 90px; }
+
+  section { margin-bottom: 56px; scroll-margin-top: 60px; }
+
+  h2.section-title {
+    font-size: 0.82rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--signal);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .summary p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 68ch;
+  }
+
+  /* ---------- Cert grid ---------- */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .cert {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--signal);
+    padding: 14px 16px;
+  }
+
+  .cert-name { font-weight: 600; font-size: 0.95rem; }
+  .cert-meta {
+    margin-top: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Projects ---------- */
+  .project {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+
+  .project h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+  }
+
+  .project p { margin-top: 6px; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .project .tags {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    background: var(--signal-soft);
+    color: var(--signal);
+    padding: 3px 9px;
+    border-radius: 3px;
+  }
+
+  /* ---------- Experience ---------- */
+  .job {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .job:last-child { border-bottom: none; }
+
+  .job-dates {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .job-title { font-weight: 600; font-size: 1.02rem; }
+  .job-company { color: var(--signal); font-weight: 500; font-size: 0.92rem; margin-top: 2px; }
+
+  .job ul { margin-top: 10px; padding-left: 18px; color: var(--ink-soft); font-size: 0.93rem; }
+  .job li { margin-bottom: 5px; }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .skills-group h3 {
+    font-size: 0.85rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .skills-group ul { list-style: none; }
+  .skills-group li {
+    font-size: 0.93rem;
+    padding: 5px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 30px 0 50px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 600px) {
+    .job { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-name">Apollos Gibbs</div>
+    <div class="hero-role">CIS Student. Technical Support &amp; IT Fundamentals</div>
+    <div class="hero-meta">
+      <span>Philadelphia, PA</span>
+      <span>•</span>
+      <!-- <a href="mailto:you@email.com"></a> Not sure If i wanna give my mail away! -->
+      <span>•</span>
+      <!-- <a href="tel:0000000000"></a> Still thinking if i should give my phone away--> 
+      <span>•</span>
+      <a href="https://github.com/rogerlens2" target="_blank" rel="noopener">github.com/rogerlens2</a>
+      <span>•</span>
+      <!-- <a href="#" target="_blank" rel="noopener">Instagram or other media i use </a> -->
+    </div>
+  </div>
+</header>
+
+<nav class="subnav">
+  <div class="wrap">
+    <ul>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="summary" class="summary">
+    <h2 class="section-title">Summary</h2>
+    <p>
+      CIS student (Associate Degree, 66% complete, 4.0 GPA) with a hands-on programming foundation in Python, HTML, and CSS,
+      and certifications spanning cloud computing, cybersecurity, and technical support. Verizon Skill Forward Orientation
+      graduate with strong customer-facing experience in fast-paced retail environments. Fluent in French, with beginner
+      Spanish — comfortable communicating clearly across diverse audiences.
+    </p>
+  </section>
+
+  <section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-grid">
+      <!-- <div class="cert"> i gotta think about it !!
+        <div class="cert-name"> <a href="edx.org"></a>Verizon Skill Forward Orientation Course</div>
+        <div class="cert-meta">edX — Dec 2024</div>
+      </div> -->
+      <div class="cert">
+        <div class="cert-name"> <a href="http://credentials.edx.org/records/programs/shared/e7f1b17ee86d44ac86a14cdb835a19b2/" target="_blank" rel="noopener">AWS Cloud Technical Essentials</a></div>
+        <div class="cert-meta">AWS — Jul 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"><a href="https://credentials.edx.org/records/programs/shared/0e7215442c0443c189a3cb20715cdec6" target="_blank" rel="noopener">Beginners Guide to Cybersecurity</a></div>
+        <div class="cert-meta">IBM — Jun 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"><a href="https://credentials.edx.org/records/programs/shared/b00c8b230e7e483986909f5d47094588" target="_blank" rel="noopener"> Technical Support Basics for Everyone</a></div>
+        <div class="cert-meta">IBM — Jul 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"> <a href="http://credentials.edx.org/records/programs/shared/291f92fa64734c61a80ac042c178ea66/" target="_blank" rel="noopener">Software, Programming, and Database Basics</a></div>
+        <div class="cert-meta">IBM — Jun 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"><a href="http://credentials.edx.org/records/programs/shared/291f92fa64734c61a80ac042c178ea66/" target="_blank" rel="noopener">HTML5 Coding Essentials and Best Practices</a></div>
+        <div class="cert-meta">W3Cx — Jun 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"><a href="http://credentials.edx.org/records/programs/shared/0e7215442c0443c189a3cb20715cdec6/" target="_blank" rel="noopener">HTML5 and CSS Fundamentals</a></div>
+        <div class="cert-meta">W3Cx — May 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"> <a href="http://credentials.edx.org/records/programs/shared/291f92fa64734c61a80ac042c178ea66/" target="_blank" rel="noopener">CSS Basics</a></div>
+        <div class="cert-meta">W3Cx — Apr 2025</div>
+      </div>
+      <!-- <div class="cert">
+         Apo Reminder : I gotta add another certification
+        <div class="cert-meta">&nbsp;</div>
+      </div> -->
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project">
+      <h3>CLI Calculator</h3>
+      <p>An interactive command-line calculator with robust input validation — handles invalid data types and
+         division-by-zero errors using try/except blocks to prevent crashes.</p>
+      <div class="tags"><span class="tag">python</span><span class="tag">error handling</span></div>
+    </div>
+
+    <div class="project">
+      <h3>Wireshark Network Traffic Analysis</h3>
+      <p>Prepared and delivered a presentation on network packet analysis using Wireshark, applying foundational
+         cybersecurity and networking concepts.</p>
+      <div class="tags"><span class="tag">networking</span><span class="tag">cybersecurity</span></div>
+    </div>
+
+    <p style="font-size:0.9rem; color:var(--ink-soft);">
+      More work in progress on <a href="https://github.com/rogerlens2" target="_blank" rel="noopener">github.com/rogerlens2</a>
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="job">
+      <div class="job-dates">Feb 2026 — Present</div>
+      <div>
+        <div class="job-title">Store Prevention Specialist</div>
+        <div class="job-company">Ross / dd's DISCOUNTS</div>
+        <ul>
+          <li>Monitor store premises for internal and external theft using observation and communication to prevent loss</li>
+          <li>Communicate consistently with store management to report incidents and coordinate response</li>
+          <li>Collaborate directly with law enforcement during theft-related incidents</li>
+          <li>Greet and engage customers while maintaining a visible security presence</li>
+          <li>Promoted from Store Associate based on performance and reliability</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-dates">Nov 2025 — Feb 2026</div>
+      <div>
+        <div class="job-title">Store Associate</div>
+        <div class="job-company">Ross / dd's DISCOUNTS</div>
+        <ul>
+          <li>Rotated across multiple departments including fitting room, stockroom, sales floor, and front-end/cashier</li>
+          <li>Delivered consistent customer service across varied roles, demonstrating adaptability and reliability</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-dates">May 2025 — Nov 2025</div>
+      <div>
+        <div class="job-title">Production Associate</div>
+        <div class="job-company">NBP Windows &amp; Doors</div>
+        <ul>
+          <li>Contributed to a production line producing 150–200 units per day</li>
+          <li>Selected by management to operate production machinery directly, based on mechanical aptitude</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-dates">Feb 2025 — May 2025</div>
+      <div>
+        <div class="job-title">Cashier</div>
+        <div class="job-company">Roses</div>
+        <ul>
+          <li>Delivered fast, friendly checkout service, assisting 90–160 customers daily</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skills-group">
+        <h3>Technical</h3>
+        <ul>
+          <li>Technical Support </li>
+          <li>Python (beginner)</li>
+          <li>HTML5 &amp; CSS</li>
+          <li>AWS Cloud Fundamentals</li>
+          <li>Cybersecurity Basics</li>
+          <li>Technical Troubleshooting</li>
+        </ul>
+      </div>
+      <div class="skills-group">
+        <h3>Professional</h3>
+        <ul>
+          <li>Customer Service</li>
+          <li>Loss Prevention</li>
+          <li>Team Collaboration</li>
+        </ul>
+      </div>
+      <div class="skills-group">
+        <h3>Languages</h3>
+        <ul>
+          <li>French — Fluent</li>
+          <li>Spanish — Beginner</li>
+          <li>English — Fluent</li>
+          <li>Creole - Fluent</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Last updated Sep 2026</div>
+</footer>
+
+</body>
+</html>
